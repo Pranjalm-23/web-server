@@ -5,7 +5,7 @@ const app = express();
 
 // Define paths for Express config
 const publicDirectoryPath = path.join(__dirname, "../public");
-const viewsPath = path.join(__dirname, "../templates");
+const viewsPath = path.join(__dirname, "../templates");     // to be used to give the files to be viewed
 
 // Setup handlebars engine and views location
 app.set("view engine", "hbs");
@@ -18,7 +18,7 @@ app.get("", (req, res) => {
   res.render("index", {
     title: "Weather",
     name: "Pranjal Mishra",
-  });
+  }); // objects give the values to be put in hbs template
 });
 
 app.get("/about", (req, res) => {
