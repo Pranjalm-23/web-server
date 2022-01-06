@@ -41,13 +41,7 @@ app.get("/help", (req, res) => {
   });
 });
 
-// app.get("/weather", (req, res) => {
-//   res.send({
-//     forecast: "It is snowing",
-//     location: "Philadelphia",
-//     name: "Pranjal Mishra",
-//   });
-// });
+
 
 app.get("/weather", (req, res) => {
   if (!req.query.address) {
@@ -56,12 +50,6 @@ app.get("/weather", (req, res) => {
     });
   }
 
-  //   res.send({
-  //       forecast: 'It is snowing',
-  //       location: 'Bhopal',
-  //       address: req.query.address
-  //   })
-  // })
   geocode(req.query.address, (error, { latitude, longitude, location }={}) => {
     if (error) {
       return res.send({ error });
