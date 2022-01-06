@@ -39,13 +39,40 @@ app.get("/help", (req, res) => {
   });
 });
 
-app.get("/weather", (req, res) => {
+// app.get("/weather", (req, res) => {
+//   res.send({
+//     forecast: "It is snowing",
+//     location: "Philadelphia",
+//     name: "Pranjal Mishra",
+//   });
+// });
+
+app.get('/weather', (req, res) => {
+  if (!req.query.address) {
+      return res.send({
+          error: 'You must provide an address!'
+      })
+  }
+
   res.send({
-    forecast: "It is snowing",
-    location: "Philadelphia",
-    name: "Pranjal Mishra",
-  });
-});
+      forecast: 'It is snowing',
+      location: 'Philadelphia',
+      address: req.query.address
+  })
+})
+
+app.get('/products', (req, res) => {
+  if (!req.query.search) {
+      return res.send({
+          error: 'You must provide a search term'
+      })
+  }
+
+  console.log(req.query.search)
+  res.send({
+      products: []
+  })
+})
 
 app.get("/help/*", (req, res) => {
   res.render("404", {
