@@ -1,7 +1,6 @@
 const path = require("path");
 const express = require("express");
-const hbs = require('hbs')
-
+const hbs = require("hbs");
 
 const app = express();
 
@@ -16,7 +15,7 @@ app.set("views", viewsPath);
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath));
-hbs.registerPartials(partialsPath)
+hbs.registerPartials(partialsPath);
 
 app.get("", (req, res) => {
   res.render("index", {
@@ -45,6 +44,22 @@ app.get("/weather", (req, res) => {
     forecast: "It is snowing",
     location: "Philadelphia",
     name: "Pranjal Mishra",
+  });
+});
+
+app.get("/help/*", (req, res) => {
+  res.render("404", {
+    title: "404",
+    name: "Pranjal Mishra",
+    errorMessage: "Help article not found.",
+  });
+});
+
+app.get("*", (req, res) => {
+  res.render("404", {
+    title: "404",
+    name: "Pranjal Mishra",
+    errorMessage: "Page not found.",
   });
 });
 
