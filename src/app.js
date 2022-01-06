@@ -1,23 +1,24 @@
-const express = require('express')
+const express = require("express");
 
-const app = express()
+const app = express();
 
-app.get('', (req, res) => {                // here the response is served when any person requests the page
-    res.send('Hello express!')
-})
+app.get("", (req, res) => {
+  // here the response is served when any person requests the page
+  res.send("Hello express!");
+});
 
-app.get('/help', (req, res) => {
-    res.send('Help page')
-})
+app.get("/help", (req, res) => {
+  res.send("<h1>Help page</h1>");
+});
 
-app.get('/about', (req, res) => {
-    res.send('About')
-})
+app.get("/about", (req, res) => {
+  res.send({ About: "Made by pranjalM" });
+});
 
-app.get('/weather', (req, res) => {
-    res.send('Your weather')
-})
+app.get("/weather", (req, res) => {
+  res.send("Your weather");
+});
 
 app.listen(3000, () => {
-    console.log('Server is up on port 3000.')
-})
+  console.log("Server is up on port 3000.");
+});
